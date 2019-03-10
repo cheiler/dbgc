@@ -37,6 +37,9 @@ class dbgc
         $this->reporting($msg);
     }
 
+    /**
+     * @param $message
+     */
     private function reporting($message){
         $line = date("Y-m-d H:i:s")." | ".$message;
         $this->report[] = $line;
@@ -86,7 +89,13 @@ class dbgc
         return false;
 
     }
-    
+
+    /**
+     * @param $table
+     * @param $fields
+     * @param $where_clause
+     * @return array|null
+     */
     public function read($table, $fields, $where_clause){
 
         $fields_string = "";
@@ -121,6 +130,10 @@ class dbgc
 
     }
 
+    /**
+     * @param $fullquery
+     * @return array|null
+     */
     public function query($fullquery){
         $out = array();
         //$query = mysqli_real_escape_string($this->link,$fullquery);
@@ -140,7 +153,13 @@ class dbgc
     }
 
 
-
+    /**
+     * @param $table
+     * @param $search_fieldname
+     * @param $search_field_value
+     * @param array $data_array
+     * @return bool
+     */
     public function update_by_field($table, $search_fieldname, $search_field_value, $data_array = array()){
         $query = "UPDATE `$table` SET ";
         $update_string = "";
